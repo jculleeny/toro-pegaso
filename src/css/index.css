@@ -120,6 +120,7 @@ p {
   position: relative;
   display: inline-block;
   z-index: 1;
+  animation: header-move 2s ease-in-out;
 }
 
 .sundries-container {
@@ -190,7 +191,21 @@ p {
 
 @media only screen and (max-width: 600px) {
   h1 {
-    font-size: 1rem;
+    font-size: 2rem;
+  }
+
+  .header-container {
+    display: block;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navigation>ul>li {
+    display: block;
   }
 
   .sundries-container {
