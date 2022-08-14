@@ -1,17 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Canvas from './components/Experience'
-import Header from './components/Header'
-import Store from './components/store/Store'
-import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './css/index.css'
+import App from './App'
+import Store from './components/routes/store/Store'
+import About from './components/routes/About'
 import Experience from './components/Experience'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Header />
-    <Store />
-    <Experience />
-    <Footer />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/store" element={<Store />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<main style={{ padding: "1rem" }}><p>There is nothing here...</p></main>} />
+        </Route>
+        <Route path="/playground" element={<Experience />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 )

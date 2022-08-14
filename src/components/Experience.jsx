@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 
 const Box = (props) => {
   const ref = useRef()
+  const [hovered, setHover] = useState(false)
 
   useFrame((state, delta) => (ref.current.rotation.x += 0.01))
 
@@ -11,7 +12,12 @@ const Box = (props) => {
       castShadow
       {...props}
       ref={ref}
+      scale={hovered ? 1.5 : 1}
       rotation={[0, 0, Math.PI * 0.25]}
+      onPointerEnter={(event) => {
+        setHover(true)
+      }}
+      onPointerLeave={(event) => setHover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={'orange'} />
